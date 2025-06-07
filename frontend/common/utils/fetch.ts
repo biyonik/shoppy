@@ -1,4 +1,4 @@
-import { API_URL } from "@/app/constants/api";
+import { API_URL } from "@/common/constants/api";
 import { getErrorMessage } from "./error";
 import { cookies } from "next/headers";
 

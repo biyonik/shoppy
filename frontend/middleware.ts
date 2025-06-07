@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { AUTHENTICATION_COOKIE } from "./app/auth/auth-cookie";
 
 // Giriş yapmadan erişilebilir route'lar
 const publicRoutes = [
@@ -19,7 +20,7 @@ const protectedRoutes = [
 
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
-    const auth = request.cookies.get('Authentication')?.value;
+    const auth = request.cookies.get(AUTHENTICATION_COOKIE)?.value;
 
     // Protected route kontrolü
     const isProtectedRoute = protectedRoutes.some(route => 

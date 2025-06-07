@@ -1,10 +1,11 @@
 "use server";
 
-import { API_URL } from "@/app/constants/api";
-import { FormError } from "@/common/form-error.interface";
+import { API_URL } from "@/common/constants/api";
+import { FormError } from "@/common/interfaces/form-error.interface";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {jwtDecode} from 'jwt-decode';
+import { AUTHENTICATION_COOKIE } from "../auth-cookie";
 
 export async function loginUser(
     _prevState: FormError,
@@ -41,7 +42,7 @@ const setAuthCookie = async (res: Response) => {
             const token = authCookie.split(';')[0].split('=')[1];
             
             const cookieStore = await cookies();
-            cookieStore.set('Authentication', token, {
+            cookieStore.set(AUTHENTICATION_COOKIE, token, {
                 secure: true,
                 httpOnly: true,
                 sameSite: 'lax',
