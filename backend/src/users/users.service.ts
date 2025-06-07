@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserRequest } from './dto/create-user.request';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
+import { Prisma } from 'generated/prisma';
 
 @Injectable()
 export class UsersService {
@@ -25,5 +26,11 @@ export class UsersService {
       console.error(`Error occurred: ${error}`);
       throw error;
     }
+  }
+
+  async getUser(filter: Prisma.UserWhereUniqueInput) {
+    return this.prismaService.user.findUniqueOrThrow({
+      where: filter,
+    });
   }
 }
