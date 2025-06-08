@@ -12,7 +12,7 @@ const getCookieHeader = async (): Promise<string> => {
 }
 
 // Ortak headers oluştur
-const getHeaders = async (additionalHeaders: Record<string, string> = {}) => {
+export const getHeaders = async (additionalHeaders: Record<string, string> = {}) => {
     const cookieString = await getCookieHeader();
 
     return {
