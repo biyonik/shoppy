@@ -14,8 +14,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Product {
+  id String @id @default(uuid())
+  name String @db.VarChar(255)
+  description String?
+  price Float
+  user User @relation(fields: [userId], references: [id])
+  userId String
+}
+
 model User {
-  id String @id @default(cuid()) @db.VarChar(36)
+  id String @id @default(uuid())
   email String @unique @db.VarChar(128)
   password String
+  products Product[]
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import createUser from "./create-user";
 import { useActionState } from "react";
 
-export default function Login() {
+export default function Signup() {
   const [state, formAction] = useActionState(createUser, { error: "" });
 
   return (

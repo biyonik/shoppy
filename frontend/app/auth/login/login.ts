@@ -1,14 +1,14 @@
 "use server";
 
 import { API_URL } from "@/common/constants/api";
-import { FormError } from "@/common/interfaces/form-error.interface";
+import { FormResponse } from "@/common/interfaces/form-response.interface";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import {jwtDecode} from 'jwt-decode';
 import { AUTHENTICATION_COOKIE } from "../auth-cookie";
 
 export async function loginUser(
-    _prevState: FormError,
+    _prevState: FormResponse,
     formData: FormData
 ) {
     const email = formData.get('email') as string;
